@@ -1,11 +1,15 @@
 name: nix
-on: [pull_request, push]
+on: 
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   check-flake:
     runs-on: ubuntu-latest
     steps:
-      - name: install nix
-      - uses: DeterminateSystems/nix-installer-action@v9
       - uses: actions/checkout@v4.1.1
+      - uses: DeterminateSystems/nix-installer-action@v9
+      - name: install nix
       - run: nix develop
