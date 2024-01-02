@@ -1,0 +1,11 @@
+name: nix
+on: [pull_request, push]
+
+jobs:
+  check-flake:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install nix
+      - uses: DeterminateSystems/nix-installer-action@v9
+      - uses: actions/checkout@v4.1.1
+      - run: nix develop
